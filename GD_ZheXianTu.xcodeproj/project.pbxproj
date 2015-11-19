@@ -15,6 +15,11 @@
 		B8E9D7BC1BFDC6F20013DBE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8E9D7BA1BFDC6F20013DBE1 /* LaunchScreen.storyboard */; };
 		B8E9D7C71BFDC6F20013DBE1 /* GD_ZheXianTuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E9D7C61BFDC6F20013DBE1 /* GD_ZheXianTuTests.m */; };
 		B8E9D7D21BFDC6F20013DBE1 /* GD_ZheXianTuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E9D7D11BFDC6F20013DBE1 /* GD_ZheXianTuUITests.m */; };
+		B8E9D7E01BFDD14C0013DBE1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8E9D7DF1BFDD14C0013DBE1 /* CoreGraphics.framework */; };
+		B8E9D7E61BFDD32B0013DBE1 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E9D7E51BFDD32B0013DBE1 /* Line.m */; };
+		B8E9D7E91BFDD80B0013DBE1 /* VerticalLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E9D7E81BFDD80B0013DBE1 /* VerticalLine.m */; };
+		B8E9D7EC1BFDE5160013DBE1 /* ZhexianTu.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E9D7EB1BFDE5160013DBE1 /* ZhexianTu.m */; };
+		B8E9D7EE1BFE01C00013DBE1 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B8E9D7ED1BFE01C00013DBE1 /* icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,14 @@
 		B8E9D7CD1BFDC6F20013DBE1 /* GD_ZheXianTuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GD_ZheXianTuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E9D7D11BFDC6F20013DBE1 /* GD_ZheXianTuUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GD_ZheXianTuUITests.m; sourceTree = "<group>"; };
 		B8E9D7D31BFDC6F20013DBE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8E9D7DF1BFDD14C0013DBE1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B8E9D7E41BFDD32B0013DBE1 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
+		B8E9D7E51BFDD32B0013DBE1 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
+		B8E9D7E71BFDD80B0013DBE1 /* VerticalLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalLine.h; sourceTree = "<group>"; };
+		B8E9D7E81BFDD80B0013DBE1 /* VerticalLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalLine.m; sourceTree = "<group>"; };
+		B8E9D7EA1BFDE5160013DBE1 /* ZhexianTu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhexianTu.h; sourceTree = "<group>"; };
+		B8E9D7EB1BFDE5160013DBE1 /* ZhexianTu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhexianTu.m; sourceTree = "<group>"; };
+		B8E9D7ED1BFE01C00013DBE1 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8E9D7E01BFDD14C0013DBE1 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +95,7 @@
 		B8E9D7A01BFDC6F20013DBE1 = {
 			isa = PBXGroup;
 			children = (
+				B8E9D7DF1BFDD14C0013DBE1 /* CoreGraphics.framework */,
 				B8E9D7AB1BFDC6F20013DBE1 /* GD_ZheXianTu */,
 				B8E9D7C51BFDC6F20013DBE1 /* GD_ZheXianTuTests */,
 				B8E9D7D01BFDC6F20013DBE1 /* GD_ZheXianTuUITests */,
@@ -101,10 +116,17 @@
 		B8E9D7AB1BFDC6F20013DBE1 /* GD_ZheXianTu */ = {
 			isa = PBXGroup;
 			children = (
+				B8E9D7ED1BFE01C00013DBE1 /* icon.png */,
 				B8E9D7AF1BFDC6F20013DBE1 /* AppDelegate.h */,
 				B8E9D7B01BFDC6F20013DBE1 /* AppDelegate.m */,
 				B8E9D7B21BFDC6F20013DBE1 /* ViewController.h */,
 				B8E9D7B31BFDC6F20013DBE1 /* ViewController.m */,
+				B8E9D7EA1BFDE5160013DBE1 /* ZhexianTu.h */,
+				B8E9D7EB1BFDE5160013DBE1 /* ZhexianTu.m */,
+				B8E9D7E41BFDD32B0013DBE1 /* Line.h */,
+				B8E9D7E51BFDD32B0013DBE1 /* Line.m */,
+				B8E9D7E71BFDD80B0013DBE1 /* VerticalLine.h */,
+				B8E9D7E81BFDD80B0013DBE1 /* VerticalLine.m */,
 				B8E9D7B51BFDC6F20013DBE1 /* Main.storyboard */,
 				B8E9D7B81BFDC6F20013DBE1 /* Assets.xcassets */,
 				B8E9D7BA1BFDC6F20013DBE1 /* LaunchScreen.storyboard */,
@@ -243,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8E9D7EE1BFE01C00013DBE1 /* icon.png in Resources */,
 				B8E9D7BC1BFDC6F20013DBE1 /* LaunchScreen.storyboard in Resources */,
 				B8E9D7B91BFDC6F20013DBE1 /* Assets.xcassets in Resources */,
 				B8E9D7B71BFDC6F20013DBE1 /* Main.storyboard in Resources */,
@@ -271,8 +294,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8E9D7B41BFDC6F20013DBE1 /* ViewController.m in Sources */,
+				B8E9D7E61BFDD32B0013DBE1 /* Line.m in Sources */,
+				B8E9D7EC1BFDE5160013DBE1 /* ZhexianTu.m in Sources */,
 				B8E9D7B11BFDC6F20013DBE1 /* AppDelegate.m in Sources */,
 				B8E9D7AE1BFDC6F20013DBE1 /* main.m in Sources */,
+				B8E9D7E91BFDD80B0013DBE1 /* VerticalLine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +438,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GD_ZheXianTu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "www.chaui.cn.GD-ZheXianTu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -423,6 +450,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GD_ZheXianTu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "www.chaui.cn.GD-ZheXianTu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
