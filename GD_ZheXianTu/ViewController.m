@@ -17,6 +17,7 @@
     UILabel *titleLabel;
     ZhexianTu *zhexian;
 }
+@property (nonatomic, strong) NSArray *lines;
 @end
 
 @implementation ViewController
@@ -24,9 +25,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
     zhexian = [[ZhexianTu alloc] initWithFrame:CGRectMake(0, 200, self.view.bounds.size.width, 300)];
     [self.view addSubview:zhexian];
     
+    [self ArrayInit];
 
     
 }
@@ -41,14 +44,15 @@
     int y = point.y;
 //    NSLog(@"touch (x, y) is (%d, %d)", x, y);
     if (y >=0 && y<= zhexian.frame.size.height) {
-        li = [[Line alloc] init];
-        li.frame = CGRectMake(0, y, zhexian.bounds.size.width, 2);
-        [zhexian addSubview:li];
-        ver = [[VerticalLine alloc] init];
-        ver.frame = CGRectMake(x, 0, 2, zhexian.bounds.size.height);
+//        li = [[Line alloc] init];
+//        li.frame = CGRectMake(0, y, zhexian.bounds.size.width, 2);
+//        [zhexian addSubview:li];
+//        ver = [[VerticalLine alloc] init];
+//        ver.frame = CGRectMake(x, 0, 2, zhexian.bounds.size.height);
+        [self createScreenWithX:x Y:y];
     }
     
-    [zhexian addSubview:ver];
+//    ÷\[zhexian addSubview:ver];
     
     titleLabel = [[UILabel alloc] init];//WithFrame:CGRectMake(x-100, y + 20, 100, 15)];
     if (x >= 150) {
@@ -81,19 +85,7 @@
     int x = point.x;
     int y = point.y;
     if (y >=0 && y<= zhexian.frame.size.height) {
-        if (!li) {
-            li = [[Line alloc] init];
-            li.frame = CGRectMake(0, y, zhexian.bounds.size.width, 2);
-            [zhexian addSubview:li];
-            ver = [[VerticalLine alloc] init];
-            ver.frame = CGRectMake(x, 0, 2, zhexian.bounds.size.height);
-            [zhexian addSubview:ver];
-        }else{
-            li.frame = CGRectMake(0, y, zhexian.bounds.size.width, 2);
-            ver.frame = CGRectMake(x, 0, 2, zhexian.bounds.size.height);
-
-        }
-
+        [self createScreenWithX:x Y:y];
     }
     titleLabel.text = [NSString stringWithFormat:@"(%d,%d)",x,y];
     
@@ -106,6 +98,99 @@
         titleLabel.frame = y>=self.view.bounds.size.height/2?CGRectMake(x+10, y - 20, 100, 15):CGRectMake(x+10, y + 20, 100, 15);
     }
     
+}
+- (void)createScreenWithX:(int)x Y:(int)y{
+
+    
+    
+    for(int i = 0;i<_lines.count;i++)
+    {
+        NSValue *pointValue = _lines[i];
+        CGPoint  point      = [pointValue CGPointValue];
+//        int interVal = [_lines[_lines.count-1] CGPointValue].x - [_lines[_lines.count-2] CGPointValue].x;
+        if (x > [_lines[1] CGPointValue].x/2 && x < [_lines[_lines.count-2] CGPointValue].x) {
+            
+            if (x <= point.x) {
+                
+                if (!li) {
+                    li = [[Line alloc] init];
+                    li.frame = CGRectMake(0, point.y, zhexian.bounds.size.width, 2);
+                    [zhexian addSubview:li];
+                    ver = [[VerticalLine alloc] init];
+                    ver.frame = CGRectMake(point.x, 0, 2, zhexian.bounds.size.height);
+                    [zhexian addSubview:ver];
+                }else{
+
+                    li.frame = CGRectMake(0, point.y, zhexian.bounds.size.width, 2);
+                    ver.frame = CGRectMake(point.x, 0, 2, zhexian.bounds.size.height);
+                    
+                }
+                
+                break;
+            }
+            
+        }else if (x > 0 && x< [_lines[1] CGPointValue].x/2) {
+            if (!li) {
+                
+                li = [[Line alloc] init];
+                li.frame = CGRectMake(0, [_lines[0] CGPointValue].y, zhexian.bounds.size.width, 2);
+                [zhexian addSubview:li];
+                ver = [[VerticalLine alloc] init];
+                ver.frame = CGRectMake([_lines[0] CGPointValue].x, 0, 2, zhexian.bounds.size.height);
+                [zhexian addSubview:ver];
+            }else{
+                li.frame = CGRectMake(0, [_lines[0] CGPointValue].y, zhexian.bounds.size.width, 2);
+                ver.frame = CGRectMake([_lines[0] CGPointValue].x, 0, 2, zhexian.bounds.size.height);
+                
+            }
+            
+            break;
+        }else if (x > [_lines[_lines.count-2] CGPointValue].x && x<[_lines[_lines.count-1] CGPointValue].x){
+            if (!li) {
+                
+                li = [[Line alloc] init];
+                li.frame = CGRectMake(0, [_lines[_lines.count-1] CGPointValue].y, zhexian.bounds.size.width, 2);
+                [zhexian addSubview:li];
+                ver = [[VerticalLine alloc] init];
+                ver.frame = CGRectMake([_lines[_lines.count-1] CGPointValue].x-2, 0, 2, zhexian.bounds.size.height);
+                [zhexian addSubview:ver];
+            }else{
+                li.frame = CGRectMake(0, [_lines[_lines.count-1] CGPointValue].y, zhexian.bounds.size.width, 2);
+                ver.frame = CGRectMake([_lines[_lines.count-1] CGPointValue].x-2, 0, 2, zhexian.bounds.size.height);
+                
+            }
+            
+            break;
+        }
+//        else if(x> [_lines[_lines.count-2] CGPointValue].x && x< ([_lines[_lines.count-2] CGPointValue].x+interVal)){
+//            
+//            if (!li) {
+//                li = [[Line alloc] init];
+//                li.frame = CGRectMake(0, [_lines[_lines.count-2] CGPointValue].y, zhexian.bounds.size.width, 2);
+//                [zhexian addSubview:li];
+//                ver = [[VerticalLine alloc] init];
+//                ver.frame = CGRectMake([_lines[_lines.count-2] CGPointValue].x-2, 0, 2, zhexian.bounds.size.height);
+//                [zhexian addSubview:ver];
+//            }else{
+//                li.frame = CGRectMake(0, [_lines[_lines.count-2] CGPointValue].y, zhexian.bounds.size.width, 2);
+//                ver.frame = CGRectMake([_lines[_lines.count-2] CGPointValue].x-2, 0, 2, zhexian.bounds.size.height);
+//            }
+//            break;
+//            
+//        }
+
+    }
+
+
+}
+- (void)ArrayInit {
+
+    _lines = @[[NSValue valueWithCGPoint:CGPointMake(0, 300/2)],
+                       [NSValue valueWithCGPoint:CGPointMake(100/2, 10/2)],
+                       [NSValue valueWithCGPoint:CGPointMake(280/2, 410/2)],
+                       [NSValue valueWithCGPoint:CGPointMake(330/2, 350/2)],
+                       [NSValue valueWithCGPoint:CGPointMake(400/2,  300)],
+                       [NSValue valueWithCGPoint:CGPointMake(zhexian.bounds.size.width,zhexian.bounds.size.height/2)]];
 }
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 
